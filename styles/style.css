@@ -112,6 +112,29 @@ form button:hover {
 }
 
 @media (max-width: 750px) {
+    form {
+        height: 100px;
+    }
+
+    form input {
+        width: 40%;
+        height: 35px;
+        margin: 6px 0;
+        padding: 15px;
+    }
+
+    form button {
+        margin: 6px 0;
+    }
+
+    .search {
+        margin: 6px auto;
+
+    }
+
+    .task-holder {
+        height: calc(100vh - 200px);
+    }
 
     .task {
         position: relative;
