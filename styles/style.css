@@ -91,15 +91,6 @@ form button:hover {
     font-size: 25px;
 }
 
-.task p {
-    position: absolute;
-    left: 5%;
-    top: 5%;
-    right: 5%;
-    bottom: 5%;
-    color: white;
-    font-size: 25px;
-}
 
 .remove {
     position: absolute;
@@ -109,7 +100,7 @@ form button:hover {
     height: 15%;
     transform: translate(50%, -50%);
     background-color: white;
-    background-image: url(x.png);
+    background-image: url(images/x.png);
     background-size: cover;
     background-position: center;
     border-radius: 50%;
