@@ -116,7 +116,7 @@ form button:hover {
     .task {
         position: relative;
         width: 80%;
-        height: 15vh;
+        height: 80px;
         margin: 10px auto;
         padding: 10px;
         background-color: #303f42;
