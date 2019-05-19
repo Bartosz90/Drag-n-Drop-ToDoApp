@@ -1,7 +1,10 @@
 const addBtn = document.querySelector('form button');
 const inputTask = document.querySelector('input');
 const ul = document.querySelector('.task-holder ul');
-let taskLiPosition = 21;
+let taskLiPositionTop = 0;
+window.onload = () => {
+    window.innerWidth < 700 ? taskLiPositionTop = 0 : taskLiPositionTop = 15;
+}
 const colors = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple', 'fuchsis', 'lime', 'teal', 'aqua', 'blue', 'navy', 'silver', 'white'];
 const toDoList = [];
 //Add a task!
@@ -21,9 +24,9 @@ const addTask = (e) => {
     newLi.textContent = inputTask.value;
     newLi.appendChild(removeDiv);
     removeDiv.className = 'remove';
-    newLi.style.top = `${taskLiPosition}vh`;
-    newLi.style.border = `2px solid ${colors[Math.floor(Math.random()*colors.length)]}`
-    taskLiPosition++;
+    newLi.style.top = `${taskLiPositionTop}vh`;
+    newLi.style.border = `2px solid ${colors[Math.floor(Math.random()*colors.length)]}`;
+    taskLiPositionTop += 2;
     inputTask.value = '';
 
     //move the task!
@@ -62,6 +65,7 @@ const addTask = (e) => {
         const index = e.target.parentNode.dataset.key;
         toDoList.splice(index, 1)
         renderList();
+        taskLiPositionTop -= 2;
     }
     removeDiv.addEventListener('click', removeTask);
 };
