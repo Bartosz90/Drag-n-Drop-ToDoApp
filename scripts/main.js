@@ -48,34 +48,34 @@ const addTask = e => {
   inputTask.value = "";
 
   //move the task!
+  if (window.innerWidth > 1000) {
+    newLi.addEventListener("mousedown", e => {
+      let shiftX = e.clientX - newLi.getBoundingClientRect().left;
+      let shiftY = e.clientY - newLi.getBoundingClientRect().top;
 
-  newLi.addEventListener("mousedown", e => {
-    let shiftX = e.clientX - newLi.getBoundingClientRect().left;
-    let shiftY = e.clientY - newLi.getBoundingClientRect().top;
-
-    moveAt(e.pageX, e.pageY);
-
-    function moveAt(pageX, pageY) {
-      newLi.style.left = pageX - shiftX + "px";
-      newLi.style.top = pageY - shiftY + "px";
-    }
-
-    function onMouseMove(e) {
       moveAt(e.pageX, e.pageY);
-    }
 
-    document.addEventListener("mousemove", onMouseMove);
+      function moveAt(pageX, pageY) {
+        newLi.style.left = pageX - shiftX + "px";
+        newLi.style.top = pageY - shiftY + "px";
+      }
 
-    newLi.onmouseup = function() {
-      document.removeEventListener("mousemove", onMouseMove);
-      newLi.onmouseup = null;
+      function onMouseMove(e) {
+        moveAt(e.pageX, e.pageY);
+      }
+
+      document.addEventListener("mousemove", onMouseMove);
+
+      newLi.onmouseup = function() {
+        document.removeEventListener("mousemove", onMouseMove);
+        newLi.onmouseup = null;
+      };
+    });
+
+    newLi.ondragstart = function() {
+      return false;
     };
-  });
-
-  newLi.ondragstart = function() {
-    return false;
-  };
-
+  }
   //remove the task!
 
   const removeTask = e => {
